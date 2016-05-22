@@ -28,3 +28,11 @@ alias tl='tmux list-sessions'
 
 # Bash aliases
 alias l='ls -la'
+
+function add_notes()
+{
+  if [ ! -f notes.txt ]; then
+    touch notes.txt
+    echo "notes.txt" >> .gitignore
+  fi
+}
