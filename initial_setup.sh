@@ -5,6 +5,9 @@ pretty_print() {
   printf "\n$indication\n" "$@"
 }
 
+# Copy dotfiles, since I won't have awk and I cannot use lookaheads with grep this is the easiest way
+ruby -e 'puts Dir.entries(".").select{|d| d[/^\.(?!git)[a-z]+$/]}' | xargs -I {} cp {} ~
+
 # Initial directory setup
 
 DEVELOPMENT_DIR="$HOME/Development/"
@@ -46,6 +49,7 @@ brew "node"
 brew "tmate"
 brew "valgrind"
 brew "htop-osx"
+brew "npm"
 brew "postgresql", restart_service: true
 brew "redis", restart_service: true
 EOF
