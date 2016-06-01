@@ -28,6 +28,7 @@ alias tl='tmux list-sessions'
 
 # Bash aliases
 alias l='ls -la'
+alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
 
 function add_notes()
 {
