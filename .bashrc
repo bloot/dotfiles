@@ -22,6 +22,7 @@ alias grs='git reset --hard origin/staging'
 alias gb='git branch'
 alias gs='git status'
 alias gd='git branch -D'
+alias grh='git reset --hard'
 
 # Tmux aliases
 alias tl='tmux list-sessions'
