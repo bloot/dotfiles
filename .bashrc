@@ -38,3 +38,8 @@ function add_notes()
     echo "notes.txt" >> .gitignore
   fi
 }
+
+function find_filetype()
+{
+  find $1 -name "*.$2" -type f | grep -o "\(.*\)/" | sort -u
+}
