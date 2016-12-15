@@ -56,6 +56,16 @@ EOF
 
 #######
 
+# Bash profile related setup
+
+if ! grep -q "export GITAWAREPROMPT" "$HOME/.bash_profile"; then
+  mkdir -p "$HOME/.bash"
+  git clone git://github.com/jimeh/git-aware-prompt.git "$HOME/.bash/"
+  sed -i '1 i\export GITAWAREPROMPT=~/.bash/git-aware-prompt\nsource "${GITAWAREPROMPT}/main.sh"' "$HOME/.bash_profile"
+fi
+
+#######
+
 # Ruby related setup
 
 echo "gem: --no-document" >> ~/.gemrc
