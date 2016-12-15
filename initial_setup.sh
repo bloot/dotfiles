@@ -5,10 +5,14 @@ pretty_print() {
   printf "\n$indication\n" "$@"
 }
 
+pretty_print "Copying dotfiles"
+
 # Copy dotfiles, since I won't have awk and I cannot use lookaheads with grep this is the easiest way
 ruby -e 'puts Dir.entries(".").select{|d| d[/^\.(?!git)[a-z]+$/]}' | xargs -I {} cp {} ~
 
 # Initial directory setup
+
+pretty_print "Creating directories"
 
 DEVELOPMENT_DIR="$HOME/Development/"
 
@@ -58,6 +62,8 @@ EOF
 
 # Bash profile related setup
 
+pretty_print "Building .bash_profile"
+
 if ! grep -q "export GITAWAREPROMPT" "$HOME/.bash_profile"; then
   mkdir -p "$HOME/.bash"
   git clone git://github.com/jimeh/git-aware-prompt.git "$HOME/.bash/"
@@ -67,6 +73,8 @@ fi
 #######
 
 # Ruby related setup
+
+pretty_print "Configuring ruby install"
 
 echo "gem: --no-document" >> ~/.gemrc
 
