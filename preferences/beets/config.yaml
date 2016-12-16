@@ -1,1 +1,18 @@
-/Users/zachary/.config/beets/config.yaml
+directory: '~/Music/iTunes/iTunes\ Media/Music/'
+library: ~/Music/music_library.blb
+import:
+  copy: no
+  resume: ask
+  log: ~/Music/beets/
+  duplicate_action: skip
+paths:
+  default: $albumartist/$album%aunique{}/$track $title
+  singleton: Non-Album/$artist/$title
+  comp: Compilations/$album%aunique{}/$track $title
+ignore: ._* *~ .DS_Store
+ignore_hidden: yes
+match:
+  strong_rec_thresh: 0.05
+per_disc_numbering: yes
+ui:
+  color: yes
