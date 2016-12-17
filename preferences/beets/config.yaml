@@ -1,9 +1,9 @@
-directory: '~/Music/iTunes/iTunes\ Media/Music/'
+directory: '/Volumes/STORE/Tagged\ Music/'
 library: ~/Music/music_library.blb
 import:
   copy: no
   resume: ask
-  log: ~/Music/beets/
+  log: ~/Music/beets/beets.log
   duplicate_action: skip
 paths:
   default: $albumartist/$album%aunique{}/$track $title
