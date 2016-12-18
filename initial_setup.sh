@@ -14,9 +14,10 @@ ruby -e 'puts Dir.entries(".").select{|d| d[/^\.(?!git)[a-z]+$/]}' | xargs -I {}
 
 pretty_print "Creating directories"
 
-DEVELOPMENT_DIR="$HOME/Development/"
+DIRS_TO_BUILD=("$HOME/Development/" "$HOME/.config/")
 
-for dir in $DEVELOPMENT_DIR
+
+for dir in $DIRS_TO_BUILD
 do
   if [ ! -d $dir ]; then
     pretty_print "Making $dir"
@@ -85,5 +86,15 @@ fi
 if ! grep -Rq "source \"\$HOME\/.rvm\/scripts\/rvm\"" ~/.bash_profile; then
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 fi
+
+#######
+
+# Python related setup
+
+curl https://bootstrap.pypa.io/ez_setup.py -o - | sudo python
+sudo easy_install pip
+
+pip install beets
+pip install beets-copyartifacts
 
 #######

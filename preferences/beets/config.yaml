@@ -1,5 +1,6 @@
 directory: '/Volumes/STORE/tagged_music/'
 library: ~/Music/music_library.blb
+plugins: copyartifacts
 import:
   copy: yes
   resume: ask
