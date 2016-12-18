@@ -1,7 +1,7 @@
-directory: '/Volumes/STORE/Tagged\ Music/'
+directory: '/Volumes/STORE/tagged_music/'
 library: ~/Music/music_library.blb
 import:
-  copy: no
+  copy: yes
   resume: ask
   log: ~/Music/beets/beets.log
   duplicate_action: skip
