@@ -1,4 +1,4 @@
-export EDITOR='subl -w'
+export EDITOR='subl'
 
 # Ruby aliases
 alias be='bundle exec'
