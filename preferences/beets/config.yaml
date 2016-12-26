@@ -7,6 +7,7 @@ import:
   log: ~/Music/beets/beets.log
   duplicate_action: skip
   incremental: yes
+  none_rec_action: asis
 paths:
   default: $albumartist/$album%aunique{}/$track $title
   singleton: Non-Album/$artist/$title
