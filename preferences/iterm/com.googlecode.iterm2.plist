@@ -31304,9 +31304,9 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>970 499 620 392 0 0 2560 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>319 213 796 473 0 0 2560 1057 </string>
+	<string>319 192 918 494 0 0 2560 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 10 1278 1047 0 0 2560 1057 </string>
+	<string>0 25 1278 1032 0 0 2560 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 694 585 363 0 0 2560 1057 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -31630,7 +31630,7 @@
 				<string></string>
 			</dict>
 			<key>Send Code When Idle</key>
-			<true/>
+			<false/>
 			<key>Set Local Environment Vars</key>
 			<true/>
 			<key>Shortcut</key>
@@ -31875,7 +31875,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-12-14T02:27:21Z</date>
+	<date>2017-01-02T08:01:02Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>

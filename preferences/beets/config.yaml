@@ -12,7 +12,7 @@ paths:
   default: $albumartist/$album%aunique{}/$track $title
   singleton: Non-Album/$artist/$title
   comp: Compilations/$album%aunique{}/$track $title
-ignore: ._* *~ .DS_Store
+ignore: ._* *~ .DS_Store /**/**/*.flac
 ignore_hidden: yes
 match:
   strong_rec_thresh: 0.05
