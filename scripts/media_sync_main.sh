@@ -3,10 +3,12 @@
 source ./media_sync.sh
 
 sync_media() {
-  if [ -z ${REMOTE_SERVER+a} ]; then
-    echo "Set remote server in order to sync"
+  if [ -z ${REMOTE_SERVER+a} ] || [ -z ${LOCAL_MEDIA_DIR+a} ]; then
+    echo "Set media directory vars before running."
   else
-    rsync -vhHE --progress -e "ssh -c blowfish" "$REMOTE_SERVER:$EXTERNAL_MEDIA_DIR" "~/Music/Tagged Library" 2> /tmp/media_sync.log
+    rsync -vaE --progress \
+      --include '*/' --include '*.mp3' \
+      --exclude '*' "$REMOTE_SERVER:$EXTERNAL_MEDIA_DIR" "$LOCAL_MEDIA_DIR" > /tmp/media_sync.log
   fi
 }
 
