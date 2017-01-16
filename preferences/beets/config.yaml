@@ -2,6 +2,7 @@ directory: '/Volumes/STORE/tagged_music/'
 library: ~/Music/music_library.blb
 plugins: copyartifacts
 import:
+  default_action: asis
   copy: yes
   resume: ask
   log: ~/Music/beets/beets.log
@@ -13,9 +14,6 @@ paths:
   singleton: Non-Album/$artist/$title
   comp: Compilations/$album%aunique{}/$track $title
 ignore: ._* *~ .DS_Store /**/**/*.flac
-ignore_hidden: yes
-match:
-  strong_rec_thresh: 0.05
 per_disc_numbering: yes
 ui:
   color: yes

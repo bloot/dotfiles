@@ -14,6 +14,9 @@ sync_media() {
 
 tag_media() {
   if ! crontab -l | grep -q "beet import" ; then
-    crontab -l | sed -i '1 i\*/10 * * * * beet import "$EXTERNAL_MEDIA_DIR"' | crontab -
+    echo "Creating cron job for Beets"
+    crontab -l | sed -i '1 i\*/10 * * * * beet import "$LOCAL_MEDIA_DIR"' | crontab -
+  else
+    echo "Cron job for Beets already created."
   fi
 }
