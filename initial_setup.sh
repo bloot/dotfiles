@@ -57,6 +57,7 @@ brew "htop-osx"
 brew "npm"
 brew "postgresql", restart_service: true
 brew "redis", restart_service: true
+brew macvim --override-system-vim
 EOF
 
 #######
@@ -100,3 +101,18 @@ pip install beets
 pip install beets-copyartifacts
 
 #######
+
+# Vim related setup
+
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+  curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+
+VIM_PLUGINS=()
+
+for plugin in $VIM_PLUGINS do
+  git clone "http://github.com/$plugin" ~/.vim/
+done
+
+#######
+
