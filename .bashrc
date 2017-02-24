@@ -1,9 +1,12 @@
-export EDITOR='subl'
+export EDITOR='subl -w'
 
 # Ruby aliases
 alias be='bundle exec'
 alias sdeploy='be cap staging deploy'
 alias sr='spring rspec'
+
+# The intention of this is to verify that a rails migration runs both ways
+alias db_migrate="rake db:migrate db:rollback && rake db:migrate"
 
 # C aliases
 alias val='valgrind'
@@ -30,7 +33,7 @@ alias tl='tmux list-sessions'
 
 # Bash aliases
 alias l='ls -la'
-alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+alias lock='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
 
 function add_notes()
 {
@@ -44,3 +47,5 @@ function find_filetype()
 {
   find $1 -name "*.$2" -type f | grep -o "\(.*\)/" | sort -u
 }
+
+export PATH="$PATH:$HOME/.rvm/bin"
