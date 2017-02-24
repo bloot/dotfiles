@@ -12,6 +12,7 @@ alias clean='make clean'
 # Environment specific aliases
 alias dev='cd ~/Development'
 alias notify="terminal-notifier -message 'Command Finished' -title 'Command Finished'"
+alias cdb='cp ~/Development/shared/database.yml ./config/database.yml'
 
 # Git related aliases
 alias gsearch='git branch -a | grep'
