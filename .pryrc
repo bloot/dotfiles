@@ -10,7 +10,6 @@ begin
     Pry.commands.alias_command 's', 'step'
     Pry.commands.alias_command 'n', 'next'
     Pry.commands.alias_command 'f', 'finish'
-    Pry.commands.alias_command 'wai', 'whereami'
   end
 rescue LoadError => err
   puts err
