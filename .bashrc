@@ -13,7 +13,7 @@ alias val='valgrind'
 alias clean='make clean'
 
 # C++
-alias cclean='rm -rf CMakeFiles/ cmake_install.cmake'
+alias cclean='rm -rf CMakeFiles/ cmake_install.cmake CMakeCache.txt'
 
 # Environment specific aliases
 alias dev='cd ~/Development'
