@@ -12,6 +12,9 @@ alias db_migrate="rake db:migrate db:rollback && rake db:migrate"
 alias val='valgrind'
 alias clean='make clean'
 
+# C++
+alias cclean='rm -rf CMakeFiles/ cmake_install.cmake'
+
 # Environment specific aliases
 alias dev='cd ~/Development'
 alias notify="terminal-notifier -message 'Command Finished' -title 'Command Finished'"
