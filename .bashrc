@@ -14,6 +14,7 @@ alias clean='make clean'
 
 # C++
 alias cclean='rm -rf CMakeFiles/ cmake_install.cmake CMakeCache.txt'
+alias cmaked='cmake -DCMAKE_BUILD_TYPE=Debug'
 
 # Environment specific aliases
 alias dev='cd ~/Development'
