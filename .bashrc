@@ -39,17 +39,20 @@ alias tl='tmux list-sessions'
 alias l='ls -la'
 alias lock='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
 
-function add_notes()
-{
+function add_notes() {
   if [ ! -f notes.txt ]; then
     touch notes.txt
     echo "notes.txt" >> .gitignore
   fi
 }
 
-function find_filetype()
-{
+function find_filetype() {
   find $1 -name "*.$2" -type f | grep -o "\(.*\)/" | sort -u
+}
+
+function build_pr_template() {
+  echo "This work connects to: ($(ruby -e "puts %x{git rev-parse --abbrev-ref HEAD}.match(/([a-zA-Z]+\-\d+)/)"))[]" > temp_checklist.mdown
+  cat ~/checklist.mdown >> temp_checklist.mdown
 }
 
 export PATH="$PATH:$HOME/.rvm/bin"
