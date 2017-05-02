@@ -1,0 +1,8 @@
+G = end of file
+$ = end of line
+
+in vim-vinegar
+  
+  p            = open preview file
+  ctrl+W+z = close preview file
+  
