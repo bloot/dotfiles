@@ -5,7 +5,9 @@ pretty_print() {
   printf "\n$indication\n" "$@"
 }
 
-if (ENV["COPY_DOTFILES"] || ENV["RUN_ALL"])
+# BEGIN Dotfile Setup
+
+if [ "$COPY_DOTFILES" == '1' ] || [ "$RUN_ALL" == '1' ]; then
   pretty_print "Copying dotfiles"
   # Copy dotfiles, since I won't have awk and I cannot use lookaheads with grep this is the easiest way
   ruby -e 'puts Dir.entries(".").select{|d| d[/^\.(?!git)[a-z]+$/]}' | xargs -I {} cp {} ~
@@ -26,11 +28,13 @@ if (ENV["COPY_DOTFILES"] || ENV["RUN_ALL"])
   done
 fi
 
-#######
+# END Dotfile Setup
 
-if (ENV["UPDATE_HOMEBREW"] || ENV["RUN_ALL"])
-  # Homebrew setup
+#######################
 
+# BEGIN Homebrew setup
+
+if [ "$INSTALL_HOMEBREW" == '1' ] || [ "$RUN_ALL" == '1' ]; then
   if ! command -v brew >/dev/null; then
     pretty_print "Installing Homebrew"
     curl -fsS \
@@ -59,12 +63,17 @@ brew "postgresql", restart_service: true
 brew "redis", restart_service: true
 brew macvim --override-system-vim
 EOF
+fi
 
 fi
 
-#######
+# END Homebrew setup
 
-if (ENV["UPDATE_BASH"] || ENV["RUN_ALL"])
+#####################
+
+## BEGIN Bash setup
+
+if [ "$CONFIGURE_BASH" == '1' ] || [ "$RUN_ALL" == '1' ]; then
 
   # Bash profile related setup
 
@@ -77,9 +86,13 @@ if (ENV["UPDATE_BASH"] || ENV["RUN_ALL"])
   fi
 fi
 
-#######
+# End Bash setup
 
-if (ENV["UPDATE_RUBY"] || ENV["RUN_ALL"])
+###################
+
+# BEGIN Ruby setup
+
+if [ "$CONFIGURE_RUBY" == '1' ] || [ "$RUN_ALL" == '1' ]; then
 
   # Ruby related setup
 
@@ -96,9 +109,13 @@ if (ENV["UPDATE_RUBY"] || ENV["RUN_ALL"])
   fi
 fi
 
-#######
+# End Ruby setup
 
-if (ENV["UPDATE_PYTHON"] || ENV["RUN_ALL"])
+#################
+
+# BEGIN Python setup
+
+if [ "$CONFIGURE_PYTHON" == '1' ] || [ "$RUN_ALL" == '1' ]; then
 
   # Python related setup
 
@@ -111,22 +128,30 @@ if (ENV["UPDATE_PYTHON"] || ENV["RUN_ALL"])
   pip install beets-copyartifacts
 fi
 
-#######
+# End Python setup
 
-if (ENV["UPDATE_VIM"] || ENV["RUN_ALL"])
+####################
+
+# BEGIN Vim setup
+
+if [ "$CONFIGURE_VIM" == '1' ] || [ "$RUN_ALL" == '1' ]; then
 
   # Vim related setup
 
   mkdir -p ~/.vim/autoload ~/.vim/bundle && \
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-  git clone git://github.com/tpope/vim-rails.git ~/.vim/bundle
-  git clone git://github.com/tpope/vim-bundler.git ~/.vim/bundle
-  git clone git://github.com/tpope/vim-vinegar.git ~/.vim/bundle
-  
+  cd ~/.vim/bundle/
+  git clone git://github.com/tpope/vim-rails.git
+  git clone git://github.com/tpope/vim-bundler.git
+  git clone git://github.com/tpope/vim-vinegar.git
+
   mkdir -p ~/.vim/colors && \
-    curl -LSso ~/.vim/colors/monokai.vim https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim 
+    curl -LSso ~/.vim/colors/monokai.vim https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim
 
 fi
+
+# End Vim setup
+
 #######
 
