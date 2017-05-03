@@ -5,43 +5,43 @@ pretty_print() {
   printf "\n$indication\n" "$@"
 }
 
-pretty_print "Copying dotfiles"
+if (ENV["COPY_DOTFILES"] || ENV["RUN_ALL"])
+  pretty_print "Copying dotfiles"
+  # Copy dotfiles, since I won't have awk and I cannot use lookaheads with grep this is the easiest way
+  ruby -e 'puts Dir.entries(".").select{|d| d[/^\.(?!git)[a-z]+$/]}' | xargs -I {} cp {} ~
 
-# Copy dotfiles, since I won't have awk and I cannot use lookaheads with grep this is the easiest way
-ruby -e 'puts Dir.entries(".").select{|d| d[/^\.(?!git)[a-z]+$/]}' | xargs -I {} cp {} ~
+  # Initial directory setup
 
-# Initial directory setup
+  pretty_print "Creating directories"
 
-pretty_print "Creating directories"
-
-DIRS_TO_BUILD=("$HOME/Development/" "$HOME/.config/")
+  DIRS_TO_BUILD=("$HOME/Development/" "$HOME/.config/")
 
 
-for dir in $DIRS_TO_BUILD
-do
-  if [ ! -d $dir ]; then
-    pretty_print "Making $dir"
-    mkdir $dir
-  fi
-done
+  for dir in $DIRS_TO_BUILD
+  do
+    if [ ! -d $dir ]; then
+      pretty_print "Making $dir"
+      mkdir $dir
+    fi
+  done
+fi
 
 #######
 
-# Homebrew setup
+if (ENV["UPDATE_HOMEBREW"] || ENV["RUN_ALL"])
+  # Homebrew setup
 
-if ! command -v brew >/dev/null; then
-  pretty_print "Installing Homebrew"
+  if ! command -v brew >/dev/null; then
+    pretty_print "Installing Homebrew"
     curl -fsS \
       'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
 
-  pretty_print "Updating PATH"
-  export PATH="/usr/local/bin:$PATH"
-fi
+    pretty_print "Updating PATH"
 
 pretty_print "Updating Homebrew formulas"
 
-brew update
-brew bundle --file=- <<EOF
+  brew update
+  brew bundle --file=- <<EOF
 brew "git"
 brew "openssl"
 brew "the_silver_searcher"
@@ -60,59 +60,73 @@ brew "redis", restart_service: true
 brew macvim --override-system-vim
 EOF
 
-#######
-
-# Bash profile related setup
-
-pretty_print "Building .bash_profile"
-
-if ! grep -q "export GITAWAREPROMPT" "$HOME/.bash_profile"; then
-  mkdir -p "$HOME/.bash"
-  git clone git://github.com/jimeh/git-aware-prompt.git "$HOME/.bash/"
-  sed -i '1 i\export GITAWAREPROMPT=~/.bash/git-aware-prompt\nsource "${GITAWAREPROMPT}/main.sh"' "$HOME/.bash_profile"
 fi
 
 #######
 
-# Ruby related setup
+if (ENV["UPDATE_BASH"] || ENV["RUN_ALL"])
 
-pretty_print "Configuring ruby install"
+  # Bash profile related setup
 
-echo "gem: --no-document" >> ~/.gemrc
+  pretty_print "Building .bash_profile"
 
-if [ ! -d "$HOME/.rvm/" ]; then
-  curl -L https://get.rvm.io | bash -s stable --auto-dotfiles --autolibs=enable --rails
-fi
-
-if ! grep -Rq "source \"\$HOME\/.rvm\/scripts\/rvm\"" ~/.bash_profile; then
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+  if ! grep -q "export GITAWAREPROMPT" "$HOME/.bash_profile"; then
+    mkdir -p "$HOME/.bash"
+    git clone git://github.com/jimeh/git-aware-prompt.git "$HOME/.bash/"
+    sed -i '1 i\export GITAWAREPROMPT=~/.bash/git-aware-prompt\nsource "${GITAWAREPROMPT}/main.sh"' "$HOME/.bash_profile"
+  fi
 fi
 
 #######
 
-# Python related setup
+if (ENV["UPDATE_RUBY"] || ENV["RUN_ALL"])
 
-curl https://bootstrap.pypa.io/ez_setup.py -o - | sudo python
-sudo easy_install pip
+  # Ruby related setup
 
-# Media management (handled by python libraries)
+  pretty_print "Configuring ruby install"
 
-pip install beets
-pip install beets-copyartifacts
+  echo "gem: --no-document" >> ~/.gemrc
+
+  if [ ! -d "$HOME/.rvm/" ]; then
+    curl -L https://get.rvm.io | bash -s stable --auto-dotfiles --autolibs=enable --rails
+  fi
+
+  if ! grep -Rq "source \"\$HOME\/.rvm\/scripts\/rvm\"" ~/.bash_profile; then
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+  fi
+fi
 
 #######
 
-# Vim related setup
+if (ENV["UPDATE_PYTHON"] || ENV["RUN_ALL"])
 
-mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-  curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+  # Python related setup
 
+  curl https://bootstrap.pypa.io/ez_setup.py -o - | sudo python
+  sudo easy_install pip
 
-VIM_PLUGINS=()
+  # Media management (handled by python libraries)
 
-for plugin in $VIM_PLUGINS do
-  git clone "http://github.com/$plugin" ~/.vim/
-done
+  pip install beets
+  pip install beets-copyartifacts
+fi
 
+#######
+
+if (ENV["UPDATE_VIM"] || ENV["RUN_ALL"])
+
+  # Vim related setup
+
+  mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+  git clone git://github.com/tpope/vim-rails.git ~/.vim/bundle
+  git clone git://github.com/tpope/vim-bundler.git ~/.vim/bundle
+  git clone git://github.com/tpope/vim-vinegar.git ~/.vim/bundle
+  
+  mkdir -p ~/.vim/colors && \
+    curl -LSso ~/.vim/colors/monokai.vim https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim 
+
+fi
 #######
 
