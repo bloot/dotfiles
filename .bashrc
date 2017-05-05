@@ -39,6 +39,9 @@ alias tl='tmux list-sessions'
 alias l='ls -la'
 alias lock='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
 
+# Vim Aliases
+alias gtags='ctags --exclude=.git --exclude='*.log' -R * `bundle show --paths`'
+
 function add_notes() {
   if [ ! -f notes.txt ]; then
     touch notes.txt
