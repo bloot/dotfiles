@@ -6,6 +6,9 @@ filetype plugin indent on
 
 syntax enable
 colorscheme monokai
+set t_Co=256
+
+set backspace=indent,eol,start
 
 set tabstop=2 expandtab shiftwidth=2
 
@@ -44,5 +47,5 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <Leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <Leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>

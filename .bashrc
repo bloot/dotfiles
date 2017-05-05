@@ -42,6 +42,10 @@ alias lock='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/
 # Vim Aliases
 alias gtags='ctags --exclude=.git --exclude='*.log' -R * `bundle show --paths`'
 
+function dev-session() {
+  tmux -2 attach-session -t $1 || tmux new-session -s $1
+}
+
 function add_notes() {
   if [ ! -f notes.txt ]; then
     touch notes.txt
