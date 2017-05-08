@@ -1,4 +1,4 @@
-let mapleader = ","
+let mapleader=","
 
 execute pathogen#infect()
 
@@ -39,13 +39,24 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
+function! PrReview()
+  let l:pulls_json = maktaba#syscall#Create([
+      \ 'curl',
+      \ ("-H Authorization: token " + $GITHUB_TOKEN),
+      \ $GITHUB_REPO_URL + '/pulls']).Call().stdout
+  let l:pulls = maktaba#json#Parse(l:pulls_json)
+  echomsg "Pulls:"
+  for l:pr in l:pulls
+    echomsg printf("  #%d: %s", l:pr.number, l:pr.title)
+  endfor
+endfunction
 
 let g:netrw_preview = 1
 
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+map <space> V
 
-nnoremap <Leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
-nnoremap <Leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+map <leader>a <C-W><C-H>
+map <leader>s <C-W><C-L>
+
+nnoremap <leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>

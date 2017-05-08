@@ -120,9 +120,6 @@ fi
 # BEGIN Vim setup
 
 if [ "$CONFIGURE_VIM" == '1' ] || [ "$RUN_ALL" == '1' ]; then
-
-  # Vim related setup
-
   mkdir -p ~/.vim/autoload ~/.vim/bundle && \
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
@@ -133,6 +130,7 @@ if [ "$CONFIGURE_VIM" == '1' ] || [ "$RUN_ALL" == '1' ]; then
   git clone https://github.com/kchmck/vim-coffee-script.git
   git clone https://github.com/kien/ctrlp.vim.git
   git clone https://github.com/vim-ruby/vim-ruby.git
+  git clone https://github.com/google/vim-maktaba.git
 
   mkdir -p ~/.vim/colors && \
     curl -LSso ~/.vim/colors/monokai.vim https://raw.githubusercontent.com/crusoexia/vim-monokai/master/colors/monokai.vim
