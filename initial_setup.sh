@@ -41,30 +41,15 @@ if [ "$INSTALL_HOMEBREW" == '1' ] || [ "$RUN_ALL" == '1' ]; then
       'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
 
     pretty_print "Updating PATH"
-
-pretty_print "Updating Homebrew formulas"
-
-  brew update
-  brew bundle --file=- <<EOF
-brew "git"
-brew "openssl"
-brew "the_silver_searcher"
-brew "tmux"
-brew "vim"
-brew "imagemagick"
-brew "bash-completion"
-brew "libyaml"
-brew "node"
-brew "tmate"
-brew "valgrind"
-brew "htop-osx"
-brew "npm"
-brew "postgresql", restart_service: true
-brew "redis", restart_service: true
-brew macvim --override-system-vim
-EOF
+  fi
 fi
 
+if [ "$CONFIGURE_HOMEBREW" == '1' ] || [ "$INSTALL_HOMEBREW" == '1' ] || [ "$RUN_ALL" == '1' ]; then
+  pretty_print "Updating Homebrew formulas"
+
+  brew tap Homebrew/bundle
+  cp preferences/brew/Brewfile ~ && cd ~
+  brew bundle
 fi
 
 # END Homebrew setup

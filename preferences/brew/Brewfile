@@ -1,0 +1,16 @@
+tap 'homebrew/bundle'
+tap 'homebrew/core'
+tap 'telemachus/brew,', 'https://telemachus@bitbucket.org/telemachus/brew.git'
+
+brew 'bash-completion'
+brew 'git'
+brew 'imagemagick'
+brew 'openssl'
+brew 'node'
+brew 'the_silver_searcher'
+brew 'tmate'
+brew 'tmux'
+brew 'vim'
+brew 'postgresql', restart_service: true
+brew "redis", restart_service: true
+brew 'macvim', override_system_vim: true
