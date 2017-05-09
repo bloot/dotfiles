@@ -131,6 +131,7 @@ if [ "$CONFIGURE_VIM" == '1' ] || [ "$RUN_ALL" == '1' ]; then
   git clone https://github.com/kien/ctrlp.vim.git
   git clone https://github.com/vim-ruby/vim-ruby.git
   git clone https://github.com/google/vim-maktaba.git
+  git clone git://github.com/airblade/vim-gitgutter.git
 
   mkdir -p ~/.vim/colors && \
     curl -LSso ~/.vim/colors/monokai.vim https://raw.githubusercontent.com/crusoexia/vim-monokai/master/colors/monokai.vim

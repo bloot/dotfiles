@@ -5,11 +5,11 @@ execute pathogen#infect()
 filetype plugin indent on
 
 syntax enable
+
 colorscheme monokai
 set t_Co=256
 
 set backspace=indent,eol,start
-
 set tabstop=2 expandtab shiftwidth=2
 
 set number
@@ -25,8 +25,6 @@ set history=1000
 set undolevels=1000
 
 set wildignore=*.swp,*.bak,*.log
-
-set pastetoggle=<F2>
 
 set autochdir
 set tags+=./tags;
