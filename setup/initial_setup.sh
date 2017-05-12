@@ -5,8 +5,8 @@ pretty_print() {
   printf "\n$indication\n" "$@"
 }
 
-source ../setup/bash.sh
-source ../setup/ruby.sh
-source ../setup/homebrew.sh
-source ../setup/python.sh
-source ../setup/vim.sh
+source ./bash.sh
+source ./ruby.sh
+source ./homebrew.sh
+source ./python.sh
+source ./vim.sh

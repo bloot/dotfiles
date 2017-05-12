@@ -1,4 +1,5 @@
 let mapleader=","
+let g:netrw_preview = 1
 
 execute pathogen#infect()
 
@@ -11,21 +12,14 @@ set t_Co=256
 
 set backspace=indent,eol,start
 set tabstop=2 expandtab shiftwidth=2
-
 set number
-
 set showmatch
-
 set smartcase
-
 set hlsearch
 set incsearch
-
 set history=1000
 set undolevels=1000
-
 set wildignore=*.swp,*.bak,*.log
-
 set autochdir
 set tags+=./tags;
 
@@ -37,24 +31,21 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-function! PrReview()
-  let l:pulls_json = maktaba#syscall#Create([
-      \ 'curl',
-      \ ("-H Authorization: token " + $GITHUB_TOKEN),
-      \ $GITHUB_REPO_URL + '/pulls']).Call().stdout
-  let l:pulls = maktaba#json#Parse(l:pulls_json)
-  echomsg "Pulls:"
-  for l:pr in l:pulls
-    echomsg printf("  #%d: %s", l:pr.number, l:pr.title)
-  endfor
-endfunction
+fun! SplitWorkspaceFromCurrent()
+  let components = ["controller", "model"]
 
-let g:netrw_preview = 1
+  for component in components
+    execute 'S' . component
+  endfor
+endfun
 
 map <space> V
 
 map <leader>a <C-W><C-H>
 map <leader>s <C-W><C-L>
+map <leader>d <C-W><C-K>
+map <leader>f <C-W><C-L>
 
+nnoremap <leader>B :call SplitWorkspaceFromCurrent()<CR>
 nnoremap <leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
