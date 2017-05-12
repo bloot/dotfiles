@@ -46,6 +46,10 @@ map <leader>s <C-W><C-L>
 map <leader>d <C-W><C-K>
 map <leader>f <C-W><C-L>
 
+map <leader>fa :Ack
+
+map <leader>schema :vs db/schema.rb<CR>
+
 nnoremap <leader>B :call SplitWorkspaceFromCurrent()<CR>
 nnoremap <leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>

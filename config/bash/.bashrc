@@ -31,6 +31,7 @@ alias gb='git branch'
 alias gs='git status'
 alias gd='git branch -D'
 alias grh='git reset --hard'
+alias gchunk='git diff master | grep "diff --git" | cut -d ' ' -f4- | awk 'match($0, /[controllers|views|models]\/.*\.(html|rb)/){ print substr($0, RSTART+1, RLENGTH-1) }' | sort'
 
 # Tmux aliases
 alias tl='tmux list-sessions'
