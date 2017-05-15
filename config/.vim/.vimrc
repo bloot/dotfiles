@@ -37,6 +37,7 @@ fun! SplitWorkspaceFromCurrent()
   for component in components
     execute 'S' . component
   endfor
+  :vs db/schema.rb
 endfun
 
 map <space> V
