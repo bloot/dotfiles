@@ -48,7 +48,7 @@ map <leader>f <C-W><C-L>
 
 map <leader>fa :Ack
 
-map <leader>schema :vs db/schema.rb<CR>
+map <leader>VE :Vex<CR>
 
 nnoremap <leader>B :call SplitWorkspaceFromCurrent()<CR>
 nnoremap <leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
