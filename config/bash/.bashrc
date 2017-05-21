@@ -37,7 +37,6 @@ function git-group() {
 }
 alias gg='git-group'
 
-
 # Tmux aliases
 alias tl='tmux list-sessions'
 
