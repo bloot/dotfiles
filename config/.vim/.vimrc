@@ -5,11 +5,12 @@ execute pathogen#infect()
 
 filetype plugin indent on
 
+set t_Co=256
+set background=dark
 syntax enable
 
 colorscheme monokai
 
-set t_Co=256
 set backspace=indent,eol,start
 set tabstop=2 expandtab shiftwidth=2
 set number
