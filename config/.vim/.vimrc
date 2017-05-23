@@ -11,6 +11,8 @@ syntax enable
 
 colorscheme monokai
 
+set swapfile
+set dir=~/tmp
 set backspace=indent,eol,start
 set tabstop=2 expandtab shiftwidth=2
 set number
