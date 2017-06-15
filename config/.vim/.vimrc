@@ -1,16 +1,14 @@
 let mapleader=","
-let g:rspec_runner = "os_x_iterm2"
-
-execute pathogen#infect()
 
 filetype plugin indent on
-
 set t_Co=256
 set background=dark
 syntax enable
-
 colorscheme monokai
 
+execute pathogen#infect()
+
+set clipboard=unnamed
 set shell=/bin/bash
 set swapfile
 set dir=~/tmp
@@ -40,10 +38,9 @@ map <leader>s <C-W><C-J>
 map <leader>d <C-W><C-K>
 map <leader>f <C-W><C-L>
 
-" Easier Find All in project
 nnoremap <leader>cw yiw<CR>
 nnoremap <leader>cl yy<CR>
-map <leader>fa :exe "Ack " . @"<CR>
+nnoremap <leader>fa :Ack
 
 nnoremap <leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
@@ -66,4 +63,8 @@ fun! SplitWorkspaceFromCurrent()
   :vs db/schema.rb
 endfun
 nnoremap <leader>S :call SplitWorkspaceFromCurrent()<CR>
+
+if executable('ag')
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
 
