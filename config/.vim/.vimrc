@@ -1,15 +1,17 @@
 let mapleader=","
-let g:netrw_preview = 1
+
+filetype plugin indent on
+set t_Co=256
+set background=dark
+syntax enable
+colorscheme monokai
 
 execute pathogen#infect()
 
-filetype plugin indent on
-
-syntax enable
-
-colorscheme monokai
-
-set t_Co=256
+set clipboard=unnamed
+set shell=/bin/bash
+set swapfile
+set dir=~/tmp
 set backspace=indent,eol,start
 set tabstop=2 expandtab shiftwidth=2
 set number
@@ -23,6 +25,26 @@ set wildignore=*.swp,*.bak,*.log
 set autochdir
 set exrc
 set secure
+set splitbelow
+set splitright
+set mouse=a
+
+map <space> V
+
+" Map keys on other side of keyboard to
+" swap current pane
+map <leader>a <C-W><C-H>
+map <leader>s <C-W><C-J>
+map <leader>d <C-W><C-K>
+map <leader>f <C-W><C-L>
+
+nnoremap <leader>cw yiw<CR>
+nnoremap <leader>cl yy<CR>
+nnoremap <leader>fa :Ack
+
+nnoremap <leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
 
 fun! <SID>StripTrailingWhitespaces()
   let l = line(".")
@@ -40,16 +62,9 @@ fun! SplitWorkspaceFromCurrent()
   endfor
   :vs db/schema.rb
 endfun
-
-map <space> V
-
-map <leader>a <C-W><C-H>
-map <leader>s <C-W><C-L>
-map <leader>d <C-W><C-K>
-map <leader>f <C-W><C-L>
-
-map <leader>fa :Ack
-map <leader>VE :Vex<CR>
 nnoremap <leader>S :call SplitWorkspaceFromCurrent()<CR>
-nnoremap <leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
-nnoremap <leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
+if executable('ag')
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
+
