@@ -14,3 +14,4 @@ brew 'vim'
 brew 'postgresql', restart_service: true
 brew "redis", restart_service: true
 brew 'macvim', override_system_vim: true
+brew 'reattach-to-user-namespace'

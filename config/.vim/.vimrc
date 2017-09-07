@@ -6,9 +6,9 @@ set background=dark
 syntax enable
 colorscheme monokai
 
+
 execute pathogen#infect()
 
-set clipboard=unnamed
 set shell=/bin/bash
 set swapfile
 set dir=~/tmp
@@ -37,6 +37,13 @@ map <leader>a <C-W><C-H>
 map <leader>s <C-W><C-J>
 map <leader>d <C-W><C-K>
 map <leader>f <C-W><C-L>
+
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <leader>a :TmuxNavigateLeft<cr>
+nnoremap <silent> <leader>s :TmuxNavigateDown<cr>
+nnoremap <silent> <leader>d :TmuxNavigateUp<cr>
+nnoremap <silent> <leader>f :TmuxNavigateRight<cr>
 
 nnoremap <leader>cw yiw<CR>
 nnoremap <leader>cl yy<CR>
