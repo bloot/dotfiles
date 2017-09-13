@@ -19,6 +19,8 @@ if [ "$CONFIGURE_VIM" == '1' ] || [ "$RUN_ALL" == '1' ]; then
   git clone https://github.com/scrooloose/nerdtree.git
   git clone git://github.com/chase/focuspoint-vim.git
   git clone git://github.com/christoomey/vim-tmux-navigator.git
+  git clone https://github.com/ajmwagar/vim-deus.git
+
 
   mkdir -p ~/.vim/colors && \
     curl -LSso ~/.vim/colors/monokai.vim https://raw.githubusercontent.com/crusoexia/vim-monokai/master/colors/monokai.vim

@@ -1,12 +1,16 @@
 let mapleader=","
 
+execute pathogen#infect()
+
 filetype plugin indent on
 set t_Co=256
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
 syntax enable
-colorscheme monokai
-
-execute pathogen#infect()
+colorscheme deus
+let g:deus_termcolors = 256
 
 set shell=/bin/bash
 set swapfile
@@ -29,6 +33,9 @@ set splitright
 set mouse=a
 
 let g:tmux_navigator_no_mappings = 1
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 40
+let g:ctrlp_working_path_mode = ''
 
 fun! <SID>StripTrailingWhitespaces()
   let l = line(".")
