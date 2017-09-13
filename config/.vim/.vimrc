@@ -6,7 +6,6 @@ set background=dark
 syntax enable
 colorscheme monokai
 
-
 execute pathogen#infect()
 
 set shell=/bin/bash
@@ -29,29 +28,7 @@ set splitbelow
 set splitright
 set mouse=a
 
-map <space> V
-
-" Map keys on other side of keyboard to
-" swap current pane
-map <leader>a <C-W><C-H>
-map <leader>s <C-W><C-J>
-map <leader>d <C-W><C-K>
-map <leader>f <C-W><C-L>
-
 let g:tmux_navigator_no_mappings = 1
-
-nnoremap <silent> <leader>a :TmuxNavigateLeft<cr>
-nnoremap <silent> <leader>s :TmuxNavigateDown<cr>
-nnoremap <silent> <leader>d :TmuxNavigateUp<cr>
-nnoremap <silent> <leader>f :TmuxNavigateRight<cr>
-
-nnoremap <leader>cw yiw<CR>
-nnoremap <leader>cl yy<CR>
-nnoremap <leader>fa :Ack
-
-nnoremap <leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
-nnoremap <leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
-
 
 fun! <SID>StripTrailingWhitespaces()
   let l = line(".")
@@ -59,7 +36,6 @@ fun! <SID>StripTrailingWhitespaces()
   %s/\s\+$//e
   call cursor(l, c)
 endfun
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 fun! SplitWorkspaceFromCurrent()
   let components = ["controller", "model"]
@@ -69,9 +45,31 @@ fun! SplitWorkspaceFromCurrent()
   endfor
   :vs db/schema.rb
 endfun
+
+map <space> V
+
+map <leader>a <C-W><C-H>
+map <leader>s <C-W><C-J>
+map <leader>d <C-W><C-K>
+map <leader>f <C-W><C-L>
+
+nnoremap <silent> <leader>a :TmuxNavigateLeft<cr>
+nnoremap <silent> <leader>s :TmuxNavigateDown<cr>
+nnoremap <silent> <leader>d :TmuxNavigateUp<cr>
+nnoremap <silent> <leader>f :TmuxNavigateRight<cr>
+
+nnoremap <leader>fa :Ack
 nnoremap <leader>S :call SplitWorkspaceFromCurrent()<CR>
+
+nnoremap <leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 if executable('ag')
   let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
 
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd BufWinEnter * NERDTreeMirror
