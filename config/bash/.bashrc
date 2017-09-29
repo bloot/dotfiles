@@ -6,6 +6,9 @@ alias be='bundle exec'
 alias sdeploy='be cap staging deploy'
 alias sr='spring rspec'
 
+# Stores
+alias rs='redis-server --daemonize yes'
+
 # The intention of this is to verify that a rails migration runs both ways
 alias db_migrate="rake db:migrate db:rollback && rake db:migrate"
 

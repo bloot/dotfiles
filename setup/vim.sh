@@ -16,7 +16,6 @@ if [ "$CONFIGURE_VIM" == '1' ] || [ "$RUN_ALL" == '1' ]; then
   git clone https://github.com/vim-airline/vim-airline-themes
   git clone https://github.com/szw/vim-tags.git
   git clone https://github.com/thoughtbot/vim-rspec.git
-  git clone https://github.com/scrooloose/nerdtree.git
   git clone git://github.com/chase/focuspoint-vim.git
   git clone git://github.com/christoomey/vim-tmux-navigator.git
   git clone https://github.com/ajmwagar/vim-deus.git
