@@ -1,4 +1,7 @@
 export EDITOR='vim'
+
+export PS1="\u \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+
 alias tmux="TERM=screen-256color-bce tmux"
 
 # Ruby aliases
