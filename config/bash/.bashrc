@@ -1,6 +1,5 @@
 export EDITOR='vim'
 
-export PS1="\u \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
 
 alias tmux="TERM=screen-256color-bce tmux"
 
@@ -48,7 +47,7 @@ alias gg='git-group'
 alias tl='tmux list-sessions'
 
 # Bash aliases
-alias l='ls -la'
+alias l='ls -laG'
 alias lock='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
 
 # Vim Aliases
