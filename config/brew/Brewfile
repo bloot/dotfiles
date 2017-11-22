@@ -1,17 +1,41 @@
-tap 'homebrew/bundle'
-tap 'homebrew/core'
-tap 'telemachus/brew,', 'https://telemachus@bitbucket.org/telemachus/brew.git'
-
-brew 'bash-completion'
-brew 'git'
-brew 'imagemagick'
-brew 'openssl'
-brew 'node'
-brew 'the_silver_searcher'
-brew 'tmate'
-brew 'tmux'
-brew 'vim'
-brew 'postgresql', restart_service: true
+tap "caskroom/cask"
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "homebrew/versions"
+tap "sammy007/cryptonight"
+tap "telemachus/brew,", "https://telemachus@bitbucket.org/telemachus/brew.git"
+cask "xquartz"
+brew "autoconf"
+brew "automake"
+brew "bash-completion"
+brew "capstone"
+brew "coreutils"
+brew "git"
+brew "ffmpeg"
+brew "fzf"
+brew "gcc@4.9"
+brew "gdb"
+brew "go"
+brew "imagemagick"
+brew "openssl"
+brew "libksba"
+brew "libusb"
+brew "llvm"
+brew "macvim"
+brew "nmap"
+brew "node"
+brew "openssl@1.1"
+brew "postgresql", restart_service: true
+brew "qt"
+brew "reattach-to-user-namespace"
 brew "redis", restart_service: true
-brew 'macvim', override_system_vim: true
-brew 'reattach-to-user-namespace'
+brew "the_silver_searcher"
+brew "tmate"
+brew "tmux"
+brew "vim"
+brew "wine"
+cask "java"
+cask "pgadmin3"
+cask "soundcast"
+cask "soundflower"

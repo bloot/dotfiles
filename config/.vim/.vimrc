@@ -32,7 +32,11 @@ set splitbelow
 set splitright
 set mouse=a
 
+set rtp+=/usr/local/opt/fzf
+let g:fzf_layout = { 'down': '~20%' }
+
 let g:tmux_navigator_no_mappings = 1
+
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 40
 let g:ctrlp_working_path_mode = ''
@@ -66,6 +70,7 @@ nnoremap <silent> <leader>d :TmuxNavigateUp<cr>
 nnoremap <silent> <leader>f :TmuxNavigateRight<cr>
 
 nnoremap <leader>fa :Ack
+nnoremap <C-P> :FZF<CR>
 nnoremap <leader>S :call SplitWorkspaceFromCurrent()<CR>
 
 nnoremap <leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>

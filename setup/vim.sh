@@ -3,11 +3,8 @@ if [ "$CONFIGURE_VIM" == '1' ] || [ "$RUN_ALL" == '1' ]; then
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
   cd ~/.vim/bundle/
-  git clone git://github.com/tpope/vim-rails.git
-  git clone git://github.com/tpope/vim-bundler.git
   git clone git://github.com/tpope/vim-vinegar.git
   git clone https://github.com/kchmck/vim-coffee-script.git
-  git clone https://github.com/kien/ctrlp.vim.git
   git clone https://github.com/vim-ruby/vim-ruby.git
   git clone https://github.com/google/vim-maktaba.git
   git clone git://github.com/airblade/vim-gitgutter.git
@@ -15,10 +12,11 @@ if [ "$CONFIGURE_VIM" == '1' ] || [ "$RUN_ALL" == '1' ]; then
   git clone https://github.com/vim-airline/vim-airline.git
   git clone https://github.com/vim-airline/vim-airline-themes
   git clone https://github.com/szw/vim-tags.git
-  git clone https://github.com/thoughtbot/vim-rspec.git
   git clone git://github.com/chase/focuspoint-vim.git
   git clone git://github.com/christoomey/vim-tmux-navigator.git
   git clone https://github.com/ajmwagar/vim-deus.git
+  git clone https://github.com/junegunn/fzf.vim
+
 
 
   mkdir -p ~/.vim/colors && \
