@@ -1,6 +1,20 @@
 let mapleader=","
 
-execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-vinegar'
+Plug 'kchmck/vim-coffee-script'
+Plug 'vim-ruby/vim-ruby'
+Plug 'google/vim-maktaba'
+Plug 'airblade/vim-gitgutter'
+Plug 'mileszs/ack.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'szw/vim-tags'
+Plug 'chase/focuspoint-vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ajmwagar/vim-deus'
+Plug 'junegunn/fzf'
 
 filetype plugin indent on
 set t_Co=256
@@ -9,8 +23,7 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
 syntax enable
-colorscheme deus
-let g:deus_termcolors = 256
+colorscheme monokai
 
 set shell=/bin/bash
 set swapfile
@@ -36,10 +49,6 @@ set rtp+=/usr/local/opt/fzf
 let g:fzf_layout = { 'down': '~20%' }
 
 let g:tmux_navigator_no_mappings = 1
-
-let g:ctrlp_max_files = 0
-let g:ctrlp_max_depth = 40
-let g:ctrlp_working_path_mode = ''
 
 fun! <SID>StripTrailingWhitespaces()
   let l = line(".")

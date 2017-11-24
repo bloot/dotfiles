@@ -1,6 +1,5 @@
 export EDITOR='vim'
 
-
 alias tmux="TERM=screen-256color-bce tmux"
 
 # Ruby aliases
@@ -23,7 +22,8 @@ alias cclean='rm -rf CMakeFiles/ cmake_install.cmake CMakeCache.txt'
 alias cmaked='cmake -DCMAKE_BUILD_TYPE=Debug'
 
 # Environment specific aliases
-alias dev='cd ~/Development'
+alias cdev='cd ~/Development'
+alias dotfiles='~/Development/dotfiles'
 alias notify="terminal-notifier -message 'Command Finished' -title 'Command Finished'"
 alias cdb='cp ~/Development/shared/database.yml ./config/database.yml'
 
@@ -47,6 +47,7 @@ alias gg='git-group'
 alias tl='tmux list-sessions'
 
 # Bash aliases
+alias px='ps ax | xargs grep'
 alias l='ls -laG'
 alias lock='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
 
