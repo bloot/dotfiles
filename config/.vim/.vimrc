@@ -1,24 +1,25 @@
 let mapleader=","
 
-call plug#begin('~/.vim/plugged')
+let @b = "Obinding.pry\e"
 
-Plug 'tpope/vim-vinegar'
-Plug 'kchmck/vim-coffee-script'
-Plug 'vim-ruby/vim-ruby'
-Plug 'google/vim-maktaba'
-Plug 'airblade/vim-gitgutter'
-Plug 'mileszs/ack.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'szw/vim-tags'
-Plug 'chase/focuspoint-vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'ajmwagar/vim-deus'
-Plug 'junegunn/fzf'
+call plug#begin('~/.vim/plugged')
+  Plug 'google/vim-maktaba'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'mileszs/ack.vim'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'szw/vim-tags'
+  Plug 'chase/focuspoint-vim'
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'ajmwagar/vim-deus'
+  Plug 'junegunn/fzf'
+  Plug 'rking/ag.vim'
+call plug#end()
 
 filetype plugin indent on
 set t_Co=256
 set termguicolors
+set wildmode=full
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
@@ -79,6 +80,8 @@ nnoremap <silent> <leader>d :TmuxNavigateUp<cr>
 nnoremap <silent> <leader>f :TmuxNavigateRight<cr>
 
 nnoremap <leader>fa :Ack
+nnoremap <leader>cdev :cd ~/Development<CR>
+nnoremap <leader>v :Vex<CR>
 nnoremap <C-P> :FZF<CR>
 nnoremap <leader>S :call SplitWorkspaceFromCurrent()<CR>
 

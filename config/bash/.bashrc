@@ -29,6 +29,8 @@ alias cdb='cp ~/Development/shared/database.yml ./config/database.yml'
 
 # Git related aliases
 alias gsearch='git branch -a | grep'
+alias gap='git add --all -p'
+alias gc='git commit'
 alias gfo='git fetch origin'
 alias gco='git checkout'
 alias grm='git reset --hard origin/master'
