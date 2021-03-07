@@ -1,11 +1,17 @@
 export EDITOR='vim'
 
+ZSH_DISABLE_COMPFIX=true
+
 alias tmux="TERM=screen-256color-bce tmux"
+
+alias clouddev="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/Development/" 
 
 # Ruby aliases
 alias be='bundle exec'
 alias sdeploy='be cap staging deploy'
 alias sr='spring rspec'
+
+alias gs='git status'
 
 # Stores
 alias rs='redis-server --daemonize yes'
