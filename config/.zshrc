@@ -53,6 +53,11 @@ alias gs='git status'
 alias gd='git branch -D'
 alias grh='git reset --hard'
 
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath(~/.zsh $fpath)
+
+autoload -Uz compinit && compinit
+
 function git-group() {
   git diff master | grep "diff --git" | cut -d ' ' -f4- | awk 'match($0, /[controllers|views|models]\/.*\.(html|rb)/){ print substr($0, RSTART+1, RLENGTH-1) }' | sort
 }
